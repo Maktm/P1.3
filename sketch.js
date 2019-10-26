@@ -1,66 +1,83 @@
-// Click and Drag an object
-// Daniel Shiffman <http://www.shiffman.net>
+function getWidgetPosition(widgetName) {
+    /**
+     * Returns the position to draw a window at depending
+     * on the type of widget that is being drawn. To
+     * determine what to pass for widgetName, look at the
+     * dictionary definition below.
+     */
+    hardcodedWidgetPos =  {
+        Weather: [0, 0],
+        Events: [0, 0],
+        Health: [0, 0],
+        Twitter: [0, 0],
+        Stocks: [0, 0],
+        News: [0, 0],
+        Messages: [0, 0],
+        Spotify: [0, 0],
+        Clock: [0, 0]
+    };
 
-var dragging = false; // Is the object being dragged?
-var rollover = false; // Is the mouse over the ellipse?
-
-var x, y, w, h;          // Location and size
-var offsetX, offsetY;    // Mouseclick offset
-
-function setup() {
-    createCanvas(1000, 900);
-
-    // Starting location
-    x = 100;
-    y = 100;
-    // Dimensions
-    w = 75;
-    h = 50;
+    return hardcodedWidgetPos[widgetName];
 }
 
-function draw() {
-    background(0);
+class Draggable {
+    constructor() {
+        this.dragging = false; // Is the object being dragged?
+        this.rollover = false; // Is the mouse over the ellipse?
 
-
-    // Is mouse over object
-    if (mouseX > x && mouseX < x + w && mouseY > y && mouseY < y + h) {
-        rollover = true;
-    }
-    else {
-        rollover = false;
-    }
-
-    // Adjust location if being dragged
-    if (dragging) {
-        x = mouseX + offsetX;
-        y = mouseY + offsetY;
+        this.x = Math.random() * 20 + 1;
+        this.y = Math.random() * 20 + 1;
+        // Dimensions
+        this.w = 500;
+        this.h = 500;
     }
 
-    stroke(0);
-    // Different fill based on state
-    if (dragging) {
-        fill (50);
-    } else if (rollover) {
+    over() {
+        // Is mouse over object
+        if (mouseX > this.x && mouseX < this.x + this.w && mouseY > this.y && mouseY < this.y + this.h) {
+        this.rollover = true;
+        } else {
+        this.rollover = false;
+        }
+
+    }
+
+    update() {
+
+        // Adjust location if being dragged
+        if (this.dragging) {
+        this.x = mouseX + this.offsetX;
+        this.y = mouseY + this.offsetY;
+        }
+
+    }
+
+    show() {
+
+        stroke(0);
+        // Different fill based on state
+        if (this.dragging) {
+        fill(50);
+        } else if (this.rollover) {
         fill(100);
-    } else {
+        } else {
         fill(175, 200);
+        }
+        rect(this.x, this.y, this.w, this.h);
     }
-    rect(x, y, w, h);
-}
 
-function mousePressed() {
-    // Did I click on the rectangle?
-    if (mouseX > x && mouseX < x + w && mouseY > y && mouseY < y + h) {
-        dragging = true;
+    pressed() {
+        // Did I click on the rectangle?
+        if (mouseX > this.x && mouseX < this.x + this.w && mouseY > this.y && mouseY < this.y + this.h) {
+        this.dragging = true;
         // If so, keep track of relative location of click to corner of rectangle
-        offsetX = x-mouseX;
-        offsetY = y-mouseY;
+        this.offsetX = this.x - mouseX;
+        this.offsetY = this.y - mouseY;
+        }
+    }
+
+    released() {
+        // Quit dragging
+        this.dragging = false;
     }
 }
-
-function mouseReleased() {
-    // Quit dragging
-    dragging = false;
-}
-
-setup();
