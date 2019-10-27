@@ -15,11 +15,12 @@
         <script>
             var monitor = setInterval(function(){
                 var elem = document.activeElement;
-                if(elem){
+                if(elem && elem.tagName == 'IFRAME'){
+                    drag.pressed();
                     clearInterval(monitor);
-                    console.log(elem);
                 }
             }, 100);
+
         </script>
     </body>
 </html>
