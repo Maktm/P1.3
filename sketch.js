@@ -1,83 +1,49 @@
-function getWidgetPosition(widgetName) {
-    /**
-     * Returns the position to draw a window at depending
-     * on the type of widget that is being drawn. To
-     * determine what to pass for widgetName, look at the
-     * dictionary definition below.
-     */
-    hardcodedWidgetPos =  {
-        Weather: [0, 0],
-        Events: [0, 0],
-        Health: [0, 0],
-        Twitter: [0, 0],
-        Stocks: [0, 0],
-        News: [0, 0],
-        Messages: [0, 0],
-        Spotify: [0, 0],
-        Clock: [0, 0]
-    };
-
-    return hardcodedWidgetPos[widgetName];
-}
-
-class Draggable {
-    constructor() {
-        this.dragging = false; // Is the object being dragged?
-        this.rollover = false; // Is the mouse over the ellipse?
-
-        this.x = Math.random() * 20 + 1;
-        this.y = Math.random() * 20 + 1;
-        // Dimensions
-        this.w = 500;
-        this.h = 500;
-    }
-
-    over() {
-        // Is mouse over object
-        if (mouseX > this.x && mouseX < this.x + this.w && mouseY > this.y && mouseY < this.y + this.h) {
-        this.rollover = true;
-        } else {
-        this.rollover = false;
-        }
-
-    }
-
-    update() {
-
-        // Adjust location if being dragged
-        if (this.dragging) {
-        this.x = mouseX + this.offsetX;
-        this.y = mouseY + this.offsetY;
-        }
-
+class ExampleDraggable extends Draggable {
+    constructor(x, y, w, h) {
+        super(x, y, w, h);
     }
 
     show() {
+        super.show();
 
-        stroke(0);
-        // Different fill based on state
         if (this.dragging) {
-        fill(50);
+            fill(10);
         } else if (this.rollover) {
-        fill(100);
+            fill(300);
         } else {
-        fill(175, 200);
+            fill(275, 500);
         }
+
+        // Update to the new background color
         rect(this.x, this.y, this.w, this.h);
     }
+}
 
-    pressed() {
-        // Did I click on the rectangle?
-        if (mouseX > this.x && mouseX < this.x + this.w && mouseY > this.y && mouseY < this.y + this.h) {
-        this.dragging = true;
-        // If so, keep track of relative location of click to corner of rectangle
-        this.offsetX = this.x - mouseX;
-        this.offsetY = this.y - mouseY;
-        }
-    }
+let drag;
+let drag2;
 
-    released() {
-        // Quit dragging
-        this.dragging = false;
-    }
+function setup() {
+    createCanvas(1000, 900);
+    drag = new ExampleDraggable(100, 100, 100, 100);
+    drag2 = new Draggable(200, 200, 100, 100);
+}
+
+function draw() {
+    background(50);
+    drag.update();
+    drag.show();
+    drag.over();
+    drag2.update();
+    drag2.show();
+    drag2.over();
+}
+
+function mousePressed() {
+    drag.pressed();
+    drag2.pressed();
+}
+
+function mouseReleased() {
+    drag.released();
+    drag2.released();
 }
