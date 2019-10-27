@@ -24,7 +24,7 @@ let drag2;
 
 function setup() {
     createCanvas(1000, 900);
-    drag = new ExampleDraggable(100, 100, 100, 100);
+    drag = new PlayerDraggable(100, 100, 400, 100);
     drag2 = new Draggable(200, 200, 100, 100);
 }
 

@@ -8,7 +8,18 @@
         <meta charset="utf-8">
     </head>
     <body>
+    <iframe id="spotifyEmbed" name="spotifyEmbed" src="https://open.spotify.com/embed/track/1WnqWQcWcuQbVzgE7ecfCY" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
         <script src="draggable.js"></script>
+        <script src="player.js"></script>
         <script src ="sketch.js"></script>
+        <script>
+            var monitor = setInterval(function(){
+                var elem = document.activeElement;
+                if(elem){
+                    clearInterval(monitor);
+                    console.log(elem);
+                }
+            }, 100);
+        </script>
     </body>
 </html>
