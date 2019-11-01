@@ -1,49 +1,46 @@
-class ExampleDraggable extends Draggable {
-    constructor(x, y, w, h) {
-        super(x, y, w, h);
-    }
+// Canvas configuration
+let canvasWidth = 1600;
+let canvasHeight = 900;
 
-    show() {
-        super.show();
-
-        if (this.dragging) {
-            fill(10);
-        } else if (this.rollover) {
-            fill(300);
-        } else {
-            fill(275, 500);
-        }
-
-        // Update to the new background color
-        rect(this.x, this.y, this.w, this.h);
-    }
-}
-
-let drag;
-let drag2;
+// Video capture screen configuration
+let capture;
+let videoWidth = 640;
+let videoHeight = 480;
 
 function setup() {
-    createCanvas(1000, 900);
-    drag = new ExampleDraggable(100, 100, 100, 100);
-    drag2 = new Draggable(200, 200, 100, 100);
+    /**
+     * Automatically called by P5js. Serves the purpose of
+     * initializing the components.
+     */
+    createCanvas(canvasWidth, canvasHeight);
+
+    /**
+     * Create a camera and hide the capture because it
+     * will cause two recordings to show up.
+     */
+    capture = createCapture(VIDEO);
+    capture.size(canvasWidth, canvasHeight);
+    capture.hide();
+}
+
+function enableCamera() {
+    /**
+     * Enables the camera and translates the image so that
+     * it is inverted along the vertical as to make it
+     * look like a proper mirror.
+     */
+    translate(videoWidth, 0);
+    scale(-1.0, 1.0);
+    image(capture, 0, 0, videoWidth, videoHeight);
+    translate(videoWidth, 0);
+    scale(-1.0, 1.0);
 }
 
 function draw() {
-    background(50);
-    drag.update();
-    drag.show();
-    drag.over();
-    drag2.update();
-    drag2.show();
-    drag2.over();
-}
-
-function mousePressed() {
-    drag.pressed();
-    drag2.pressed();
-}
-
-function mouseReleased() {
-    drag.released();
-    drag2.released();
+    /**
+     * Called repeatedly on every frame by P5js to see
+     * how to draw the next frame.
+     */
+    background(255);
+    enableCamera();
 }
