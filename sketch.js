@@ -1,49 +1,56 @@
-class ExampleDraggable extends Draggable {
-    constructor(x, y, w, h) {
-        super(x, y, w, h);
-    }
+const canvasWidth = 1600;
+const canvasHeight = 900;
 
-    show() {
-        super.show();
-
-        if (this.dragging) {
-            fill(10);
-        } else if (this.rollover) {
-            fill(300);
-        } else {
-            fill(275, 500);
-        }
-
-        // Update to the new background color
-        rect(this.x, this.y, this.w, this.h);
-    }
-}
-
-let drag;
-let drag2;
+let drawEngine = null;
+let capture = null;
 
 function setup() {
-    createCanvas(1000, 900);
-    drag = new PlayerDraggable(100, 100, 400, 100);
-    drag2 = new Draggable(200, 200, 100, 100);
+    /**
+     * Automatically called by P5js and used to initialize the
+     * components that are to be drawn on every frame.
+     */
+
+    createCanvas(canvasWidth, canvasHeight);
+
+    capture = createCapture(VIDEO);
+    capture.size(canvasWidth, canvasHeight);
+    capture.hide();
+
+    drawEngine = new DrawEngine([
+        // Spotify web player
+        new SpotifyDraggable(100, 100, 278, 358),
+    ]);
 }
 
 function draw() {
-    background(50);
-    drag.update();
-    drag.show();
-    drag.over();
-    drag2.update();
-    drag2.show();
-    drag2.over();
+    /**
+     * Automatically called by P5js on every frame to determine
+     * how to display the components by redrawing everything.
+     */
+    background(0);
+    drawCamera();
+    drawEngine.draw();
 }
 
 function mousePressed() {
-    drag.pressed();
-    drag2.pressed();
+    drawEngine.pressed();
 }
 
 function mouseReleased() {
-    drag.released();
-    drag2.released();
+    drawEngine.released();
+}
+
+function drawCamera() {
+    /**
+     * Gets the camera feed, inverts it across the vertical so
+     * that it looks like a mirror, then displays it in the canvas.
+     */
+    const videoWidth = canvasWidth;
+    const videoHeight = canvasHeight;
+
+    translate(videoWidth, 0);
+    scale(-1.0, 1.0);
+    image(capture, 0, 0, videoWidth, videoHeight);
+    translate(videoWidth, 0);
+    scale(-1.0, 1.0);
 }
