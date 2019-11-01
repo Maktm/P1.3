@@ -3,14 +3,14 @@ const canvasHeight = 900;
 
 let drawEngine = null;
 let capture = null;
+let canvas = null;
 
 function setup() {
     /**
      * Automatically called by P5js and used to initialize the
      * components that are to be drawn on every frame.
      */
-
-    createCanvas(canvasWidth, canvasHeight);
+    canvas = createCanvas(canvasWidth, canvasHeight);
 
     capture = createCapture(VIDEO);
     capture.size(canvasWidth, canvasHeight);

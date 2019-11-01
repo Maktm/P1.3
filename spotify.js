@@ -9,9 +9,30 @@ class SpotifyDraggable extends Draggable {
         // Adds 50 to the specified height to make room for "drag region"
         super(x, y, w, h + 50);
 
+        this.gridStack = createDiv('');
+        this.gridStack.class('grid-stack');
+
+        this.stackItem = createDiv('');
+        this.stackItem.class('grid-stack-item');
+        this.stackItem.attribute('data-gs-x', '0');
+        this.stackItem.attribute('data-gs-y', '0');
+        this.stackItem.attribute('data-gs-width', '4');
+        this.stackItem.attribute('data-gs-height', '2');
+        this.stackItem.parent(this.gridStack);
+
+        this.itemContent = createDiv('');
+        this.itemContent.class('grid-stack-item-content');
+        this.itemContent.parent(this.stackItem);
+
         this.embedded = createDiv('');
         this.embedded.size(w, h);
         this.embedded.html(this.getEmbedCode());
+        this.embedded.parent(this.itemContent);
+
+        // TODO: Position the stack on top of the canvas and set the height
+        $(function () {
+            $('.grid-stack').gridstack();
+        });
     }
 
     getEmbedCode() {
