@@ -19,6 +19,7 @@ function setup() {
     drawEngine = new DrawEngine([
         // Spotify web player
         new SpotifyDraggable(100, 100, 278, 358),
+        new StepsDraggable(300, 50, 252, 250)
     ]);
 }
 
