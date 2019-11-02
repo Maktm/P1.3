@@ -19,6 +19,8 @@ function setup() {
     drawEngine = new DrawEngine([
         // Spotify web player
         new SpotifyDraggable(100, 100, 278, 358),
+        // NyTimes web player
+        new NyTimesDraggable(0, 0, 500, 358)
     ]);
 }
 
