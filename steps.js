@@ -12,7 +12,7 @@ class StepsDraggable extends Draggable {
             animationEnabled: true,
             theme: "light2",
             title:{
-                text: "Your Steps"
+                text: "Your Steps for the week"
             },
             axisY:{
                 includeZero: true
@@ -20,13 +20,13 @@ class StepsDraggable extends Draggable {
             data: [{        
                 type: "line",       
                 dataPoints: [
-                    { y: 3000 },
-                    { y: 3150 },
-                    { y: 6000 }, 
-                    { y: 2000 },
-                    { y: 1000 },
-                    { y: 4000 },
-                    { y: 5150 },
+                    { y: 6434 },
+                    { y: 9145 },
+                    { y: 7233 }, 
+                    { y: 6399 },
+                    { y: 6535 },
+                    { y: 7983 },
+                    { y: 8086 },
                 ]
             }]
         });
