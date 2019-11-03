@@ -44,9 +44,6 @@ class Draggable {
          * of a Draggable instance. To include your drawings inside of
          * a Draggable object, override this method and draw your stuff.
          */
-        stroke(0);
-
-        rect(this.x, this.y, this.w, this.h);
     }
 
     pressed() {
