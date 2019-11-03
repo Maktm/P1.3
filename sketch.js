@@ -22,7 +22,9 @@ function setup() {
         // NYTimes news
         new NyTimesDraggable(1380, 36, 500, 358),
         // Chat (SMS)
-        new ChatDraggable(0, 0, 300, 500)
+        new ChatDraggable(0, 0, 300, 500),
+        // Time
+        new TimeDraggable(50, 50, 600, 500)
     ]);
 }
 
