@@ -12,6 +12,10 @@ class SpotifyDraggable extends Draggable {
         this.embedded = createDiv('');
         this.embedded.size(w, h);
         this.embedded.html(this.getEmbedCode());
+
+        this.dragRegion = createDiv('');
+        this.dragRegion.attribute('style', 'background: #22272B; text-align: center; color: white;');
+        this.dragRegion.size(w, 50);
     }
 
     getEmbedCode() {
@@ -30,5 +34,6 @@ class SpotifyDraggable extends Draggable {
     show() {
         super.show();
         this.embedded.position(this.x, this.y);
+        this.dragRegion.position(this.x, this.y + this.h - 50);
     }
 }

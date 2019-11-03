@@ -1,5 +1,5 @@
-const canvasWidth = 1600;
-const canvasHeight = 900;
+const canvasWidth = 1920;
+const canvasHeight = 1080;
 
 let drawEngine = null;
 let capture = null;
@@ -18,9 +18,9 @@ function setup() {
 
     drawEngine = new DrawEngine([
         // Spotify web player
-        new SpotifyDraggable(100, 100, 278, 358),
+        new SpotifyDraggable(1600, 450, 278, 358),
         // NyTimes web player
-        new NyTimesDraggable(0, 0, 500, 358)
+        new NyTimesDraggable(1380, 36, 500, 358)
     ]);
 }
 

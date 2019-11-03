@@ -19,11 +19,37 @@
             body {
                 margin: 0;
             }
-            .list-group{
+            div {
+                opacity: 95%;
+            }
+            .list-group {
                 max-height: 358px;
                 margin-bottom: 10px;
                 overflow-y: scroll;
                 -webkit-overflow-scrolling: touch;
+            }
+            .list-group-item {
+                background: #22272B;
+                color: white;
+            }
+            .list-group-item:hover {
+                background-color: black;
+            }
+            /* width */
+            ::-webkit-scrollbar {
+                width: 10px;
+            }
+            /* Track */
+            ::-webkit-scrollbar-track {
+                background: #22272B;
+            }
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+                background: #888;
+            }
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+                background: #555;
             }
         </style>
     </head>
