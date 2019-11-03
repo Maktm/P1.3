@@ -24,7 +24,9 @@ function setup() {
         // Chat (SMS)
         new ChatDraggable(0, 0, 300, 500),
         // Time
-        new TimeDraggable(50, 50, 600, 500)
+        new TimeDraggable(50, 50, 600, 500),
+
+        new TwitterDraggable(300, 700, 250, 300)
     ]);
 }
 
