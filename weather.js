@@ -19,15 +19,10 @@ class WeatherDraggable extends Draggable {
     show() {
         if (temperature != null) {
             // Draw the temperature onto the screen
-<<<<<<< HEAD
-            this.content.html(`<h1 class="display-3" style="color: white;">Temperature: ${temperature}</h1>`);
-=======
             this.content.html(`
-                    
                     <h1 class="display-3" style="color: white;"><i class='fas fa-cloud-showers-heavy' style='font-size:48px;color:white'></i>
 ${temperature}</h1>
             `);
->>>>>>> 2a5d4447a12ade6c5a5caba751a2ee90d98d2ec9
             this.content.position(this.x, this.y);
         }
     }
