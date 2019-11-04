@@ -7,7 +7,7 @@ class WeatherDraggable extends Draggable {
         this.content = createDiv('');
         this.content.size(w, h);
 
-        loadJSON('http://api.openweathermap.org/data/2.5/weather?q=Lubbock&APPID=d365b3893e2efbfac1e11e6808b6e5c6\n', this.onJsonReceived);
+        loadJSON('http://api.openweathermap.org/data/2.5/weather?q=Lubbock&APPID=d365b3893e2efbfac1e11e6808b6e5c6&units=imperial\n', this.onJsonReceived);
     }
 
     onJsonReceived(data) {
