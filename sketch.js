@@ -26,8 +26,8 @@ function setup() {
         // Time
         new TimeDraggable(2162, 16, 600, 500),
         // Weather
-        new WeatherDraggable(29, 18, 300, 300),
-        
+        new WeatherDraggable(29, 18, 300, 150),
+        // Calendar
         new CalendarDraggable(0, 0, 550, 550)
     ]);
 }
