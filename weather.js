@@ -13,12 +13,13 @@ class WeatherDraggable extends Draggable {
     onJsonReceived(data) {
         console.log(data);
         temperature = data['main']['temp'];
+        
     }
 
     show() {
         if (temperature != null) {
             // Draw the temperature onto the screen
-            this.content.html(`<h1 class="display-3" style="color: white;">${temperature}</h1>`);
+            this.content.html(`<h1 class="display-3" style="color: white;">${ (((temperature - 273.15) * 9)/5) + 32}</h1>`);
             this.content.position(this.x, this.y);
         }
     }
