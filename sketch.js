@@ -18,13 +18,15 @@ function setup() {
 
     drawEngine = new DrawEngine([
         // Spotify web player
-        new SpotifyDraggable(1600, 450, 278, 358),
+        new SpotifyDraggable(1622, 647, 278, 358),
         // NYTimes news
-        new NyTimesDraggable(1380, 36, 500, 358),
+        new NyTimesDraggable(27, 133, 500, 358),
         // Chat (SMS)
-        new ChatDraggable(0, 0, 300, 500),
+        new ChatDraggable(1594, 107, 300, 500),
         // Time
-        new TimeDraggable(50, 50, 600, 500)
+        new TimeDraggable(2162, 16, 600, 500),
+        // Weather
+        new WeatherDraggable(29, 18, 300, 300)
     ]);
 }
 
