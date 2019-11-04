@@ -1,4 +1,4 @@
-# hci-project-1
+# HCI Project 1 - Advanced Mirror User Interface
 Human Computer Interaction Team Project 1
 
 Required Features: 
