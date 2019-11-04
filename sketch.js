@@ -18,7 +18,6 @@ function setup() {
 
     drawEngine = new DrawEngine([
         // Spotify web player
-<<<<<<< HEAD
         new SpotifyDraggable(1622, 647, 278, 358),
         // NYTimes news
         new NyTimesDraggable(27, 133, 500, 358),
@@ -27,11 +26,9 @@ function setup() {
         // Time
         new TimeDraggable(2162, 16, 600, 500),
         // Weather
-        new WeatherDraggable(29, 18, 300, 300)
-=======
-        new SpotifyDraggable(100, 100, 278, 358),
+        new WeatherDraggable(29, 18, 300, 300),
+        
         new CalendarDraggable(0, 0, 550, 550)
->>>>>>> origin/feature-calendar
     ]);
 }
 
